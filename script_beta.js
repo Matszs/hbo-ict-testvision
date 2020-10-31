@@ -66,7 +66,7 @@ $('#hbo-ict-selector-export').click(function() {
 });
 
 $('#hbo-ict-selector-import').click(function() {
-        var data = window.promp("Voer JSON data in");
+        var data = window.prompt("Voer JSON data in");
         localStorage.setItem("hbo_ict_groups", data);
         hboIctScriptData = JSON.parse(hboIctScriptDataTxt);
         hboIctLoadGroups();
