@@ -51,6 +51,7 @@ $('body').on('click', '#hbo-ict-selector-delete', function() {
         var element = $('#hbo-ict-selector option[value="' + groupName + '"]');
         
         delete hboIctScriptData.groups[groupName];
+        localStorage.setItem("hbo_ict_groups", JSON.stringify(hboIctScriptData));
         element.remove();
         
         $('#hbo-ict-selector').change();
