@@ -1,6 +1,6 @@
 var hboIctselectedGroupStudentNumbers = null;
 
-if(typeof(vulAfnameBeoordelenOverzicht) !== 'undefined)
+if(typeof(vulAfnameBeoordelenOverzicht) !== 'undefined')
         vulAfnameBeoordelenOverzicht2 = vulAfnameBeoordelenOverzicht;
    
 highlightStudents = function() {
