@@ -15,8 +15,7 @@ vulAfnameBeoordelenOverzicht = function(e) {
     }, 500);
 };
 
-
-$('<div style="position: fixed; z-index: 30001; bottom: 0; left: 0; background: white; padding: 10px;"><select id="hbo-ict-selector"></select><button id="hbo-ict-selector-add">+</button><button id="hbo-ict-selector-delete">-</button></div>').appendTo('body');
+$('<div style="position: fixed; z-index: 30001; bottom: 0; left: 0; background: white; padding: 10px;"><select id="hbo-ict-selector"></select><button id="hbo-ict-selector-add">+</button><button id="hbo-ict-selector-delete">-</button></div><button id="hbo-ict-selector-export">export</button><button id="hbo-ict-selector-import">import</button></div></div>').appendTo('body');
 
 var hboIctScriptDataTxt = localStorage.getItem("hbo_ict_groups");
 if(hboIctScriptDataTxt == null) {
@@ -25,6 +24,13 @@ if(hboIctScriptDataTxt == null) {
 }
 
 var hboIctScriptData = JSON.parse(hboIctScriptDataTxt);
+
+var hboIctLoadGroups = function() {
+        $('#hbo-ict-selector').html('');
+        for (var groupName in hboIctScriptData.groups) {
+                $('#hbo-ict-selector').append('<option value="' + groupName + '">' + groupName + '</option>');
+        }
+};
 
 $('#hbo-ict-selector-add').click(function() {
         var groupName = window.prompt("Naam van de groep");
@@ -36,9 +42,7 @@ $('#hbo-ict-selector-add').click(function() {
         $('#hbo-ict-selector').append('<option value="' + groupName + '">' + groupName + '</option>');
 });
 
-for (var groupName in hboIctScriptData.groups) {
-    $('#hbo-ict-selector').append('<option value="' + groupName + '">' + groupName + '</option>');
-}
+hboIctLoadGroups();
 
 $('body').on('change', '#hbo-ict-selector', function() {
         hboIctselectedGroupStudentNumbers = hboIctScriptData.groups[$(this).val()];
@@ -57,3 +61,13 @@ $('body').on('click', '#hbo-ict-selector-delete', function() {
         $('#hbo-ict-selector').change();
 }).change();
 
+$('#hbo-ict-selector-export').click(function() {
+        alert(JSON.stringify(hboIctScriptData));
+});
+
+$('#hbo-ict-selector-import').click(function() {
+        var data = window.promp("Voer JSON data in");
+        localStorage.setItem("hbo_ict_groups", data);
+        hboIctScriptData = JSON.parse(hboIctScriptDataTxt);
+        hboIctLoadGroups();
+});
