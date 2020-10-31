@@ -15,7 +15,7 @@ vulAfnameBeoordelenOverzicht = function(e) {
     }, 500);
 };
 
-$('<div style="position: fixed; z-index: 30001; bottom: 0; left: 0; background: white; padding: 10px;"><select id="hbo-ict-selector"></select><button id="hbo-ict-selector-add">+</button><button id="hbo-ict-selector-delete">-</button></div><button id="hbo-ict-selector-export">export</button><button id="hbo-ict-selector-import">import</button></div></div>').appendTo('body');
+$('<div style="position: fixed; z-index: 30001; bottom: 0; left: 0; background: white; padding: 10px;"><select id="hbo-ict-selector"></select><button id="hbo-ict-selector-add">+</button><button id="hbo-ict-selector-delete">-</button><button id="hbo-ict-selector-export">export</button><button id="hbo-ict-selector-import">import</button></div>').appendTo('body');
 
 var hboIctScriptDataTxt = localStorage.getItem("hbo_ict_groups");
 if(hboIctScriptDataTxt == null) {
