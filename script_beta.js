@@ -1,10 +1,23 @@
 var hboIctselectedGroupStudentNumbers = null;
 
-vulAfnameBeoordelenOverzicht2 = vulAfnameBeoordelenOverzicht;
+if(typeof(vulAfnameBeoordelenOverzicht) !== 'undefined)
+        vulAfnameBeoordelenOverzicht2 = vulAfnameBeoordelenOverzicht;
+   
 highlightStudents = function() {
         if(!hboIctselectedGroupStudentNumbers) return;
         Array.from(document.querySelectorAll("#beoordelen_list #toew_kandidaatnaam .innerveld")).filter(e => hboIctselectedGroupStudentNumbers.some(t => e.textContent.includes(t))).forEach(e => {
             e.closest("tr").style.backgroundColor = "#32BF84";
+        });
+        
+        $.each($('#beoordelen_list #toew_kandidaatnaam .innerveld, #of_items_list #knaam .innerveld'), function(elem) {
+                var text = $(this).text();
+                var row = $(this).closest('tr');
+                
+                if(hboIctselectedGroupStudentNumbers.some(t => text.includes(t))) {
+                        row.css('backgroundColor', '#32BF84');
+                } else {
+                        row.css('backgroundColor', '');
+                }
         });
 };
 
