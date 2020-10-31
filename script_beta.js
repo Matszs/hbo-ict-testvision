@@ -1,18 +1,23 @@
-var studentNumbers = [...window.prompt("kopieer en plak uit DLO: Groepen -> kolom: Leden -> alle tekst (achternaam, voornaam, emailadres, student nummer)").matchAll(/(500[0-9]{5,})/g)].flat();
+$('<div style="position: fixed; z-index: 30001; bottom: 0; left: 0; background: white; padding: 10px;"><select id="hbo-ict-selector"></select><button id="hbo-ict-selector-add">+</button><button id="hbo-ict-selector-delete">-</button></div>').appendTo('body');
 
-vulAfnameBeoordelenOverzicht2 = vulAfnameBeoordelenOverzicht;
-highlightStudents = function() {
-        Array.from(document.querySelectorAll("#beoordelen_list #toew_kandidaatnaam .innerveld")).filter(e => studentNumbers.some(t => e.textContent.includes(t))).forEach(e => {
-            e.closest("tr").style.backgroundColor = "#32BF84";
-        });
-};
+var hboIctScriptDataTxt = localStorage.getItem("hbo_ict_groups");
+if(hboIctScriptData == null) {
+        hboIctScriptDataTxt = JSON.stringify({"groups": {}});
+        localStorage.setItem("hbo_ict_groups", hboIctScriptDataTxt);
+}
 
-vulAfnameBeoordelenOverzicht = function(e) {
-    var t;
-    vulAfnameBeoordelenOverzicht2(e), t = setInterval(function() {
-        gBeoOverzichtIsBezig || (clearInterval(t), highlightStudents())
-    }, 500);
-};
+hboIctScriptData = JSON.parse(hboIctScriptDataTxt);
 
-highlightStudents();
-$('<div style="position: fixed; z-index: 30001; bottom: 0; left: 0; background: white; padding: 10px;"><select><option>IT101</option><option>IT102</option></select><button>+</button><button>-</button></div>').appendTo('body');
+$('#hbo-ict-selector-add').click(function() {
+        var groupName = window.prompt("Naam van de groep");
+        var studentNumbers = [...window.prompt("kopieer en plak uit DLO: Groepen -> kolom: Leden -> alle tekst (achternaam, voornaam, emailadres, student nummer)").matchAll(/(500[0-9]{5,})/g)].flat();
+
+        hboIctScriptData.groups[groupName] = studentNumbers;
+        localStorage.setItem("hbo_ict_groups", hboIctScriptDataTxt);
+        
+        $('#hbo-ict-selector').append('<option>' + groupName + '</option>');
+});
+
+for (var groupName in hboIctScriptData.groups) {
+    $('#hbo-ict-selector').append('<option>' + groupName + '</option>');
+}
