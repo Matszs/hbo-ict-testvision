@@ -44,3 +44,15 @@ $('body').on('change', '#hbo-ict-selector', function() {
         hboIctselectedGroupStudentNumbers = hboIctScriptData.groups[$(this).val()];
         highlightStudents();
 }).change();
+
+
+$('body').on('click', '#hbo-ict-selector-delete', function() {
+        var groupName = $('#hbo-ict-selector').val();
+        var element = $('#hbo-ict-selector option[value="' + groupName + '"]');
+        
+        delete hboIctScriptData.groups[groupName];
+        element.remove();
+        
+        $('#hbo-ict-selector').change();
+}).change();
+
