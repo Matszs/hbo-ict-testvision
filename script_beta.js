@@ -41,6 +41,6 @@ for (var groupName in hboIctScriptData.groups) {
 }
 
 $('body').on('change', '#hbo-ict-selector', function() {
-        hboIctselectedGroupStudentNumbers = hboIctScriptData.groups[groupName];
+        hboIctselectedGroupStudentNumbers = hboIctScriptData.groups[$(this).val()];
         highlightStudents();
 }).change();
