@@ -2,7 +2,7 @@ var hboIctselectedGroupStudentNumbers = null;
 
 vulAfnameBeoordelenOverzicht2 = vulAfnameBeoordelenOverzicht;
 highlightStudents = function() {
-        if(!hboIctselectedGroup) return;
+        if(!hboIctselectedGroupStudentNumbers) return;
         Array.from(document.querySelectorAll("#beoordelen_list #toew_kandidaatnaam .innerveld")).filter(e => hboIctselectedGroupStudentNumbers.some(t => e.textContent.includes(t))).forEach(e => {
             e.closest("tr").style.backgroundColor = "#32BF84";
         });
