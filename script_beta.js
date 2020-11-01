@@ -64,13 +64,12 @@ $('#hbo-ict-selector-add').click(function() {
         hboIctLoadGroups();
 });
 
-hboIctLoadGroups();
-
 $('body').on('change', '#hbo-ict-selector', function() {
         hboIctselectedGroupStudentNumbers = hboIctScriptData.groups[$(this).val()];
         highlightStudents();
-}).change();
+});
 
+hboIctLoadGroups();
 
 $('body').on('click', '#hbo-ict-selector-delete', function() {
         var groupName = $('#hbo-ict-selector').val();
