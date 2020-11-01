@@ -2,6 +2,8 @@ var hboIctselectedGroupStudentNumbers = null;
 
 if(typeof(vulAfnameBeoordelenOverzicht) !== 'undefined')
         vulAfnameBeoordelenOverzicht2 = vulAfnameBeoordelenOverzicht;
+if(typeof(hideToetsView) !== 'undefined')
+        hideToetsView2 = hideToetsView;
    
 highlightStudents = function() {
         if(!hboIctselectedGroupStudentNumbers) return;
@@ -9,7 +11,7 @@ highlightStudents = function() {
             e.closest("tr").style.backgroundColor = "#32BF84";
         });
         
-        $.each($('#beoordelen_list #toew_kandidaatnaam .innerveld, #of_items_list #knaam .innerveld'), function(elem) {
+        $.each($('#beoordelen_list #toew_kandidaatnaam .innerveld, #of_items_list #knaam .innerveld, #av_kand_list #knaam .innerveld'), function(elem) {
                 var text = $(this).text();
                 var row = $(this).closest('tr');
                 
@@ -23,9 +25,15 @@ highlightStudents = function() {
 
 vulAfnameBeoordelenOverzicht = function(e) {
     var t;
-    vulAfnameBeoordelenOverzicht2(e), t = setInterval(function() {
+    vulAfnameBeoordelenOverzicht2(e); 
+    t = setInterval(function() {
         gBeoOverzichtIsBezig || (clearInterval(t), highlightStudents())
     }, 500);
+};
+
+hideToetsView = function() {
+    hideToetsView2();
+    highlightStudents();
 };
 
 $('<div style="position: fixed; z-index: 30001; bottom: 0; left: 0; background: white; padding: 10px;"><select id="hbo-ict-selector"></select><button id="hbo-ict-selector-add">+</button><button id="hbo-ict-selector-delete">-</button><button id="hbo-ict-selector-export">export</button><button id="hbo-ict-selector-import">import</button></div>').appendTo('body');
@@ -43,6 +51,7 @@ var hboIctLoadGroups = function() {
         for (var groupName in hboIctScriptData.groups) {
                 $('#hbo-ict-selector').append('<option value="' + groupName + '">' + groupName + '</option>');
         }
+        $('#hbo-ict-selector').change();
 };
 
 $('#hbo-ict-selector-add').click(function() {
@@ -52,7 +61,7 @@ $('#hbo-ict-selector-add').click(function() {
         hboIctScriptData.groups[groupName] = studentNumbers;
         localStorage.setItem("hbo_ict_groups", JSON.stringify(hboIctScriptData));
         
-        $('#hbo-ict-selector').append('<option value="' + groupName + '">' + groupName + '</option>');
+        hboIctLoadGroups();
 });
 
 hboIctLoadGroups();
@@ -65,13 +74,10 @@ $('body').on('change', '#hbo-ict-selector', function() {
 
 $('body').on('click', '#hbo-ict-selector-delete', function() {
         var groupName = $('#hbo-ict-selector').val();
-        var element = $('#hbo-ict-selector option[value="' + groupName + '"]');
-        
+       
         delete hboIctScriptData.groups[groupName];
         localStorage.setItem("hbo_ict_groups", JSON.stringify(hboIctScriptData));
-        element.remove();
-        
-        $('#hbo-ict-selector').change();
+        hboIctLoadGroups();
 }).change();
 
 $('#hbo-ict-selector-export').click(function() {
