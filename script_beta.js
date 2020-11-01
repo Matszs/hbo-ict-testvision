@@ -56,7 +56,7 @@ var hboIctLoadGroups = function() {
 
 $('#hbo-ict-selector-add').click(function() {
         var groupName = window.prompt("Naam van de groep");
-        var studentNumbers = [...window.prompt("kopieer en plak uit DLO: Groepen -> kolom: Leden -> alle tekst (achternaam, voornaam, emailadres, student nummer)").matchAll(/(500[0-9]{5,})/g)].flat();
+        var studentNumbers = [ ... new Set([...window.prompt("kopieer en plak uit DLO: Groepen -> kolom: Leden -> alle tekst (achternaam, voornaam, emailadres, student nummer)").matchAll(/(500[0-9]{5,})/g)].flat() ];
 
         hboIctScriptData.groups[groupName] = studentNumbers;
         localStorage.setItem("hbo_ict_groups", JSON.stringify(hboIctScriptData));
