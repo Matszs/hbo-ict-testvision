@@ -43,8 +43,8 @@ Use one of the latests builds:
 ---
 
 ### Greasemonkey script (beta script)
-
-```// ==UserScript==
+```
+// ==UserScript==
 // @name     Testvision group sorter
 // @version  1
 // @include https://hva.testvision.nl/*
@@ -57,4 +57,5 @@ var injectScript = function() {
   document.getElementsByTagName("head")[0].appendChild(script);
 };
 
-injectScript();```
+injectScript();
+```
