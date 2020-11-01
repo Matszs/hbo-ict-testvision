@@ -4,7 +4,7 @@
 
 Create a bookmark in your webbrowser and use the following data as location-input:
 
-```javascript:var%20injectScript%20%3D%20function%28%29%20%7B%0Avar%20script%20%3D%20document.createElement%28%22script%22%29%3B%0Ascript.type%20%3D%20%22text%2Fjavascript%22%3B%0Ascript.src%20%3D%20%22https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fmatszs%2Fhbo-ict-testvision%2Fscript.js%22%3B%0Adocument.getElementsByTagName%28%22head%22%29%5B0%5D.appendChild%28script%29%3B%0A%7D%3B%0A%0AinjectScript%28%29%3B```
+```javascript:var%20injectScript%20%3D%20function%28%29%20%7B%0Avar%20script%20%3D%20document.createElement%28%22script%22%29%3B%0Ascript.type%20%3D%20%22text%2Fjavascript%22%3B%0Ascript.src%20%3D%20%22https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fmatszs%2Fhbo-ict-testvision%40latest%2Fscript.js%22%3B%0Adocument.getElementsByTagName%28%22head%22%29%5B0%5D.appendChild%28script%29%3B%0A%7D%3B%0A%0AinjectScript%28%29%3B```
 
 Click on the bookmark on the testvision website to activate the script.
 
@@ -14,7 +14,7 @@ Click on the bookmark on the testvision website to activate the script.
 
 Create a bookmark in your webbrowser and use the following data as location-input:
 
-```javascript:var%20injectScript%20%3D%20function%28%29%20%7B%0Avar%20script%20%3D%20document.createElement%28%22script%22%29%3B%0Ascript.type%20%3D%20%22text%2Fjavascript%22%3B%0Ascript.src%20%3D%20%22https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fmatszs%2Fhbo-ict-testvision%2Fscript_beta.js%22%3B%0Adocument.getElementsByTagName%28%22head%22%29%5B0%5D.appendChild%28script%29%3B%0A%7D%3B%0A%0AinjectScript%28%29%3B```
+```javascript:var%20injectScript%20%3D%20function%28%29%20%7B%0Avar%20script%20%3D%20document.createElement%28%22script%22%29%3B%0Ascript.type%20%3D%20%22text%2Fjavascript%22%3B%0Ascript.src%20%3D%20%22https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fmatszs%2Fhbo-ict-testvision%40latest%2Fscript_beta.js%22%3B%0Adocument.getElementsByTagName%28%22head%22%29%5B0%5D.appendChild%28script%29%3B%0A%7D%3B%0A%0AinjectScript%28%29%3B```
 
 Click on the bookmark on the testvision website to activate the script.
 
@@ -53,7 +53,7 @@ Use one of the latests builds:
 var injectScript = function() {
   var script = document.createElement("script");
   script.type = "text/javascript";
-  script.src = "https://cdn.jsdelivr.net/gh/matszs/hbo-ict-testvision/script_beta.js";
+  script.src = "https://cdn.jsdelivr.net/gh/matszs/hbo-ict-testvision@latest/script_beta.js";
   document.getElementsByTagName("head")[0].appendChild(script);
 };
 
